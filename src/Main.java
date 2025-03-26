@@ -1,12 +1,9 @@
-import java.sql.Array;
-import java.util.ArrayList;
-
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
 
-        Sale cart = new Sale();
+        Cart cart = new Cart();
         try {
             cart.calculateTotalPrice();
         } catch (EmptyCartException e) {
@@ -21,21 +18,19 @@ public class Main {
         cart.addProduct(P2);
         cart.addProduct(P3);
 
+        ExceptionTester tester = new ExceptionTester(cart);
+        System.out.println("no error should be thrown");
+        tester.forceThrowsEmptyCartException();
+        System.out.println("testing indexoob...");
+        tester.forceIndexOutOfBoundsExceptions();
 
-        try {
-            double total = cart.calculateTotalPrice();
-            System.out.println("Total price of the Cart :" + total);
-        } catch (EmptyCartException e) {
-            System.out.println("Error:" + e.getMessage());
-        }
-
-        try {
-            System.out.println(cart.getProducts(2));
-
-        } catch (IndexOutOfBoundsException e) {
-            System.out.println("Error: " + e.getMessage());
+        ExceptionTester emptyCartTester = new ExceptionTester(new Cart());
+        System.out.println("error should be thrown");
+        emptyCartTester.forceThrowsEmptyCartException();
 
 
-        }
+
+
+
     }
 }

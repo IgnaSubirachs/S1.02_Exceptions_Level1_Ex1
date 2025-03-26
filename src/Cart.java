@@ -1,21 +1,20 @@
-import org.w3c.dom.ls.LSOutput;
-
 import java.util.ArrayList;
 
-public class Sale {
+public class Cart {
     private ArrayList<Product> products;
     private double totalPrice;
 
-    public Sale() {
+    public Cart() {
         this.products = new ArrayList<>();
         this.totalPrice = totalPrice;
     }
 
-    public Product getProducts(int i) {
-        if(i>= products.size()){
-            throw new IndexOutOfBoundsException("Out of the limits");
-        }
-        return products.get(i);
+    public ArrayList<Product> getProducts() {
+       // if(i>= products.size()){
+         //   throw new IndexOutOfBoundsException("Out of the limits");
+        //}
+        // return products.get(i);
+        return this.products;
     }
     public void addProduct (Product product){
         products.add(product);
