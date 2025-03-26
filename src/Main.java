@@ -19,13 +19,13 @@ public class Main {
         cart.addProduct(P3);
 
         ExceptionTester tester = new ExceptionTester(cart);
-        System.out.println("no error should be thrown");
+        System.out.println("No error should be thrown");
         tester.forceThrowsEmptyCartException();
-        System.out.println("testing indexoob...");
+        System.out.println("testing IndexOutOfBoundsExceptions");
         tester.forceIndexOutOfBoundsExceptions();
 
         ExceptionTester emptyCartTester = new ExceptionTester(new Cart());
-        System.out.println("error should be thrown");
+        System.out.println("Error should be thrown");
         emptyCartTester.forceThrowsEmptyCartException();
 
 
